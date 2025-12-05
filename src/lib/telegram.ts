@@ -127,12 +127,14 @@ export async function sendPaidPhoto(
   caption: string, 
   userIsAdmin: boolean
 ): Promise<{ ok: boolean; result?: { message_id: number } }> {
+
   if (userIsAdmin) {
     return telegramRequest('sendPhoto', {
       chat_id: chatId,
       photo: fileId,
       caption: parseHtmlContent(caption),
       parse_mode: 'HTML',
+      protect_content: true
     }) as Promise<{ ok: boolean; result?: { message_id: number } }>;
   }
   
@@ -146,6 +148,7 @@ export async function sendPaidPhoto(
     caption: parseHtmlContent(caption),
     parse_mode: 'HTML',
     payload: `photo_${chatId}_${Date.now()}`,
+    protect_content: true
   }) as Promise<{ ok: boolean; result?: { message_id: number } }>;
 }
 
@@ -155,6 +158,7 @@ export async function sendPaidAudio(
   userIsAdmin: boolean,
   lang: 'it' | 'es' | 'en' = 'en'
 ): Promise<{ ok: boolean; result?: { message_id: number } }> {
+
   const caption = getRandomCaption(lang);
   
   if (userIsAdmin) {
@@ -163,6 +167,7 @@ export async function sendPaidAudio(
       audio: fileId,
       caption: parseHtmlContent(caption),
       parse_mode: 'HTML',
+      protect_content: true
     }) as Promise<{ ok: boolean; result?: { message_id: number } }>;
   }
   
@@ -176,6 +181,7 @@ export async function sendPaidAudio(
     caption: parseHtmlContent(caption),
     parse_mode: 'HTML',
     payload: `audio_${chatId}_${Date.now()}`,
+    protect_content: true
   }) as Promise<{ ok: boolean; result?: { message_id: number } }>;
 }
 
@@ -185,12 +191,14 @@ export async function sendPaidVideo(
   caption: string, 
   userIsAdmin: boolean
 ): Promise<{ ok: boolean; result?: { message_id: number } }> {
+
   if (userIsAdmin) {
     return telegramRequest('sendVideo', {
       chat_id: chatId,
       video: fileId,
       caption: parseHtmlContent(caption),
       parse_mode: 'HTML',
+      protect_content: true
     }) as Promise<{ ok: boolean; result?: { message_id: number } }>;
   }
   
@@ -204,6 +212,7 @@ export async function sendPaidVideo(
     caption: parseHtmlContent(caption),
     parse_mode: 'HTML',
     payload: `video_${chatId}_${Date.now()}`,
+    protect_content: true
   }) as Promise<{ ok: boolean; result?: { message_id: number } }>;
 }
 
@@ -219,6 +228,7 @@ export async function sendPhotoWithButton(
     photo: fileId,
     caption: parseHtmlContent(caption),
     parse_mode: 'HTML',
+    protect_content: true,
     reply_markup: {
       inline_keyboard: [[
         { text: buttonText, url: buttonUrl }
