@@ -1,0 +1,6 @@
+1) deploy to VERCEL
+2) nsert env variables:
+KV_REST_API_TOKEN="xxx"
+KV_REST_API_URL="xxx"
+TELEGRAM_BOT_TOKEN="xxx"
+3) set webhook (https://api.telegram.org/botYOUR_TOKEN/setWebhook?url=https://YOUR_PROJECT.vercel.app/api/webhook)
