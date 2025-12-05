@@ -1,5 +1,5 @@
 1) deploy to VERCEL
-2) nsert env variables:
+2) insert env variables:
 KV_REST_API_TOKEN="xxx"
 KV_REST_API_URL="xxx"
 TELEGRAM_BOT_TOKEN="xxx"
