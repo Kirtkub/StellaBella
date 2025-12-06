@@ -60,6 +60,7 @@ export async function sendMessage(chatId: number, text: string, options: Record<
     chat_id: chatId,
     text: parseHtmlContent(text),
     parse_mode: 'HTML',
+    disable_web_page_preview: true,
     ...options,
   });
 }
